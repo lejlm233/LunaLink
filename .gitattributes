@@ -1,0 +1,11 @@
+# Normalize all text files to LF (in repo and on checkout)
+* text=auto eol=lf
+
+# Windows scripts keep CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Binaries - never touch
+*.jar binary
+*.png binary
+*.ico binary

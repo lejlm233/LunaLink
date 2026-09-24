@@ -1,0 +1,4 @@
+export enum EnvName {
+    CONFIG_PATH = 'LUNALINK_CONFIG',
+    LUNALINK_PATHNAME = 'LUNALINK_PATHNAME',
+}

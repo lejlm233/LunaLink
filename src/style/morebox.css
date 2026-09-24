@@ -1,0 +1,337 @@
+.text-area {
+    width: 100%;
+    resize: vertical;
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    padding: 10px 12px;
+    font-size: var(--font-size-sm);
+    font-family: inherit;
+}
+
+.more-box {
+    display: none;
+    position: absolute;
+    z-index: 100;
+    min-width: 18rem;
+    max-width: min(92vw, 28rem);
+    max-height: 85vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-sizing: border-box;
+    animation: moreBoxFadeIn 0.2s ease-out;
+}
+
+@keyframes moreBoxFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.more-box-header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    background: rgba(0, 0, 0, 0.25);
+    border-bottom: 1px solid var(--card-border);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.more-box-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--text-primary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.more-box-title::before {
+    content: '';
+    width: 3px;
+    height: 18px;
+    background: linear-gradient(180deg, var(--accent-primary) 0%, var(--accent-success) 100%);
+    border-radius: 2px;
+}
+
+.more-box-close {
+    flex: 0 0 auto;
+    width: 2rem;
+    height: 2rem;
+    margin: 0;
+    padding: 0;
+    border: 1px solid var(--card-border);
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.25);
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+
+.more-box-close:hover {
+    background: var(--accent-primary);
+    border-color: var(--accent-primary);
+    color: #fff;
+    transform: rotate(90deg);
+}
+
+/* ===== Sections ===== */
+.more-box-section {
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid var(--card-border);
+}
+
+.more-box-section:last-child {
+    border-bottom: none;
+}
+
+.more-box-section-title {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 0.6rem;
+    letter-spacing: 0.02em;
+}
+
+.more-box-hint {
+    font-size: var(--font-size-xs);
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 0.6rem;
+}
+
+.more-box-autosync {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: var(--font-size-sm);
+    color: var(--text-primary);
+    cursor: pointer;
+    margin: 0.6rem 0;
+    user-select: none;
+}
+
+.more-box-autosync input[type='checkbox'] {
+    width: 1rem;
+    height: 1rem;
+    accent-color: var(--accent-color, #00bea4);
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.more-box-autosync .more-box-hint {
+    margin: 0;
+    margin-left: 1.5rem;
+}
+
+.more-box-cmd-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.more-box-cmd-grid button {
+    width: 100%;
+}
+
+.more-box-row {
+    display: flex;
+    gap: 8px;
+}
+
+.more-box-row > button {
+    flex: 1;
+}
+
+.more-box-row-check {
+    align-items: center;
+}
+
+.more-box-row-check label {
+    cursor: pointer;
+}
+
+.more-box-btn {
+    width: 100%;
+    text-align: center;
+}
+
+.more-box-btn-block {
+    width: 100%;
+}
+
+.more-box-btn-danger {
+    background: rgba(248, 81, 73, 0.15);
+    border-color: rgba(248, 81, 73, 0.4);
+    color: #ff7b72;
+}
+
+.more-box-btn-danger:hover {
+    background: rgba(248, 81, 73, 0.25);
+    border-color: #ff7b72;
+    color: #ff7b72;
+}
+
+.more-box-section-danger {
+    padding: 1rem;
+}
+
+/* video settings inner layout */
+.spoiler .box > div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 8px;
+}
+
+.spoiler .box button {
+    display: block;
+    width: 100%;
+    margin-top: 6px;
+}
+
+.more-box label {
+    text-shadow: none;
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+}
+
+.more-box input:not([type='checkbox']):not([type='radio']),
+.more-box textarea {
+    box-sizing: border-box;
+    margin: 4px 0;
+    padding: 10px 12px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: var(--font-size-sm);
+    font-family: inherit;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.more-box input:not([type='checkbox']):not([type='radio']):focus,
+.more-box textarea:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.1);
+}
+
+.more-box button:not(.more-box-close) {
+    padding: 8px 16px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+    font-size: var(--font-size-xs);
+    font-family: inherit;
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.more-box button:not(.more-box-close):hover {
+    background: rgba(0, 0, 0, 0.4);
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+}
+
+/* Toast feedback for clipboard / actions */
+.more-box-toast {
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0.6rem 0 0;
+    padding: 8px 12px;
+    background: var(--accent-primary);
+    color: #fff;
+    font-size: var(--font-size-xs);
+    line-height: 1.4;
+    border-radius: var(--radius-md);
+    text-align: center;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    pointer-events: none;
+    word-break: break-all;
+}
+
+.more-box-toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.control-buttons-list.collapsed ~ .more-box {
+    display: none !important;
+}
+
+/* keep the spoiler (video settings expander) working */
+.spoiler > input ~ .box {
+    display: none;
+}
+
+.spoiler > input:checked ~ .box {
+    display: block;
+}
+
+.spoiler > label::before {
+    content: '►';
+    margin-right: 5px;
+}
+
+.spoiler > input:checked ~ label::before {
+    content: '▼';
+}
+
+.spoiler > input:checked ~ div {
+    display: block;
+    padding: 10px;
+}
+
+.spoiler > input {
+    display: none;
+}
+
+/* ===== Mobile responsive: more-box ===== */
+@media screen and (max-width: 768px) {
+    .more-box {
+        position: fixed !important;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        max-width: 100% !important;
+        max-height: 80vh;
+        overflow-y: auto;
+        z-index: 100;
+        box-sizing: border-box;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+        border-top: none;
+    }
+}

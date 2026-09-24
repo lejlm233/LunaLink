@@ -1,0 +1,335 @@
+:root {
+    --block-top-padding: 1rem;
+    --block-bottom-padding: 1rem;
+    --button-top-padding: 0.5rem;
+    --button-bottom-padding: 0.5rem;
+    --header-height: 4rem;
+    --footer-height: 3.5rem;
+}
+
+.dialog-background {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.dialog-container {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    width: 90%;
+    max-width: 520px;
+    min-width: 320px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.dialog-container.ready {
+    height: auto;
+    min-height: auto;
+}
+
+.dialog-container button, .dialog-container select, .dialog-container input {
+    font-family: inherit;
+}
+
+.dialog-container button {
+    font-size: var(--font-size-sm);
+}
+
+.dialog-container select {
+    text-overflow: ellipsis;
+}
+
+.dialog-block {
+}
+
+.dialog-header {
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    height: var(--header-height);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    border-bottom: 1px solid var(--card-border);
+}
+
+.dialog-header span.dialog-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.dialog-header span.dialog-title::before {
+    content: '';
+    width: 3px;
+    height: 20px;
+    background: linear-gradient(180deg, var(--accent-primary) 0%, var(--accent-success) 100%);
+    border-radius: 2px;
+}
+
+.dialog-body {
+    padding: var(--block-top-padding);
+    background: transparent;
+    overflow-y: auto;
+    flex: 1;
+    min-height: 0;
+}
+
+.dialog-body.hidden {
+    height: 0;
+    padding: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.dialog-body.visible {
+    height: auto;
+    opacity: 1;
+    transition: all 0.3s ease;
+}
+
+.dialog-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-top: 1px solid var(--card-border);
+    gap: 1rem;
+}
+
+.dialog-footer span.subtitle {
+    font-weight: 400;
+    font-size: var(--font-size-xs);
+    color: var(--text-secondary);
+    flex: 1;
+}
+
+.dialog-footer button {
+    padding: 10px 20px;
+    border-radius: var(--radius-md);
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: var(--font-size-sm);
+    transition: all var(--transition-fast);
+    background: linear-gradient(135deg, var(--accent-primary) 0%, #1f6feb 100%);
+    color: white;
+    box-shadow: var(--shadow-glow-blue);
+}
+
+.dialog-footer button:hover:not(:disabled) {
+    background: linear-gradient(135deg, var(--accent-primary-hover) 0%, #238636 100%);
+    box-shadow: 0 4px 15px rgba(88, 166, 255, 0.4);
+    transform: translateY(-1px);
+}
+
+.dialog-footer button:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.dialog-footer button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    background: var(--card-border);
+    box-shadow: none;
+}
+
+/* 配置窗口底部「保存」绿色按钮（Ready 状态栏右侧） */
+.dialog-footer button.button-green {
+    background: linear-gradient(135deg, #2ea043 0%, #238636 100%);
+    color: #fff;
+    box-shadow: 0 2px 10px rgba(46, 160, 67, 0.35);
+}
+
+.dialog-footer button.button-green:hover:not(:disabled) {
+    background: linear-gradient(135deg, #3fb950 0%, #2ea043 100%);
+    box-shadow: 0 4px 15px rgba(46, 160, 67, 0.45);
+    transform: translateY(-1px);
+}
+
+/* 重置 / 加载 水平排成一行 */
+.controls.buttons-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* 配置弹窗标题栏右侧的关闭（X）按钮：放大，方便点击（不影响底部控制栏按钮） */
+.dialog-header .control-button {
+    width: 2rem;
+    height: 2rem;
+    margin: 0;
+    padding: 0;
+    opacity: 0.85;
+    background: transparent;
+    border-radius: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--transition-fast), opacity var(--transition-fast);
+}
+
+.dialog-header .control-button:hover {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.dialog-header .control-button > svg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.controls .label {
+    grid-column: labels;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--text-secondary);
+    padding: 0.5rem 0;
+}
+
+.controls .input {
+    grid-column: controls;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 10px 12px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: var(--font-size-sm);
+    transition: all var(--transition-fast);
+}
+
+.controls .input:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.1);
+}
+
+.controls .input:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.controls .input[type="range"] {
+    padding: 0;
+    cursor: pointer;
+}
+
+.controls .button {
+    grid-column: controls;
+    padding: 8px 16px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+    font-size: var(--font-size-xs);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.controls .button:hover {
+    background: rgba(0, 0, 0, 0.4);
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+}
+
+.controls {
+    display: grid;
+    grid-template-columns: [labels] 35% [controls] 65%;
+    padding: 0.75rem 1rem;
+    grid-gap: 0.5rem;
+    align-items: center;
+    border-bottom: 1px solid var(--card-border);
+}
+
+.controls:last-of-type {
+    border-bottom: none;
+}
+
+/* Visible custom checkbox with check mark (replaces the hidden native checkbox) */
+.controls .input[type="checkbox"] {
+    display: inline-block;
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    padding: 0;
+    flex: 0 0 auto;
+    border: 1.5px solid var(--card-border);
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    position: relative;
+    transition: all var(--transition-fast);
+}
+
+.controls .input[type="checkbox"]:hover {
+    border-color: var(--accent-primary);
+}
+
+.controls .input[type="checkbox"]:checked {
+    background: var(--accent-primary);
+    border-color: var(--accent-primary);
+}
+
+.controls .input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 1px;
+    width: 5px;
+    height: 10px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.controls .input[type="checkbox"]:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.25);
+}

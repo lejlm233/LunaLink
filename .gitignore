@@ -1,0 +1,16 @@
+/node_modules
+/dist
+/build
+/.idea
+/.zcode
+/debug.log
+*.log
+
+# Local workbuddy memory (do not commit)
+/.workbuddy
+
+# Local self-signed TLS certificates (never commit private keys)
+/ssl
+
+# Local runtime config (contains accessToken, never commit)
+/config.yaml

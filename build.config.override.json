@@ -1,0 +1,8 @@
+{
+  "INCLUDE_ADB_SHELL": false,
+  "INCLUDE_DEV_TOOLS": false,
+  "USE_BROADWAY": false,
+  "USE_TINY_H264": false,
+  "USE_H264_CONVERTER": false,
+  "USE_WEBCODECS": true
+}

@@ -1,0 +1,552 @@
+:root {
+    /* 深色主题为主 */
+    --main-bg-gradient: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #0d1117 100%);
+    --main-bg-solid: #0d1117;
+    --card-bg: rgba(30, 34, 43, 0.8);
+    --card-bg-hover: rgba(36, 41, 51, 0.9);
+    --card-border: rgba(240, 246, 252, 0.1);
+    --card-border-hover: rgba(56, 139, 253, 0.3);
+    
+    /* 文字颜色 */
+    --text-primary: #f0f6fc;
+    --text-secondary: #8b949e;
+    --text-muted: #6e7681;
+    
+    /* 强调色 */
+    --accent-primary: #58a6ff;
+    --accent-primary-hover: #79c0ff;
+    --accent-success: #3fb950;
+    --accent-success-hover: #56d364;
+    --accent-danger: #f85149;
+    --accent-danger-hover: #ff7b72;
+    --accent-warning: #d29922;
+    
+    /* 阴影效果 */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+    --shadow-glow-blue: 0 0 20px rgba(88, 166, 255, 0.3);
+    --shadow-glow-green: 0 0 20px rgba(63, 185, 80, 0.3);
+    
+    /* 圆角 */
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    
+    /* 过渡动画 */
+    --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-normal: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* 字体 */
+    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+    --font-mono: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Mono', 'Roboto Mono', monospace;
+    
+    /* 其他 */
+    --font-size-xs: 12px;
+    --font-size-sm: 13px;
+    --font-size-base: 14px;
+    --font-size-lg: 16px;
+    --font-size-xl: 20px;
+    --font-size-2xl: 24px;
+    
+    /* 兼容性变量 */
+    --main-bg-color: #0d1117;
+    --stream-bg-color: #161b22;
+    --shell-bg-color: #010409;
+    --text-shadow-color: #161b22;
+    --header-bg-color: rgba(30, 34, 43, 0.8);
+    --controls-bg-color: rgba(30, 34, 43, 0.95);
+    --control-buttons-bg-color: rgba(30, 34, 43, 0.95);
+    --text-color: #f0f6fc;
+    --text-color-light: #8b949e;
+    --link-color: #58a6ff;
+    --link-color-light: #79c0ff;
+    --link-color_visited: #58a6ff;
+    --link-color_visited-light: #79c0ff;
+    --svg-checkbox-bg-color: #3fb950;
+    --svg-button-fill: #8b949e;
+    --kill-button-hover-color: #f85149;
+    --url-color: #6e7681;
+    --button-text-color: #58a6ff;
+    --button-border-color: rgba(240, 246, 252, 0.1);
+    --progress-background-color: rgba(88, 166, 255, 0.2);
+    --progress-background-error-color: rgba(248, 81, 73, 0.2);
+    --font-size: 14px;
+}
+
+/* 深色模式已作为默认主题 */
+
+html {
+    font-size: var(--font-size-base);
+}
+
+a {
+    color: var(--accent-primary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+a:hover {
+    color: var(--accent-primary-hover);
+}
+
+a:visited {
+    color: var(--accent-primary);
+}
+
+body {
+    color: var(--text-primary);
+    background: var(--main-bg-gradient);
+    background-color: var(--main-bg-solid);
+    position: absolute;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* 毛玻璃效果 */
+.glass-effect {
+    background: rgba(30, 34, 43, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(240, 246, 252, 0.1);
+}
+
+/* 通用动画 */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-glow {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.animate-fadeIn {
+    animation: fadeIn 0.3s ease-out forwards;
+}
+
+.animate-slideIn {
+    animation: slideIn 0.3s ease-out forwards;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(240, 246, 252, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(240, 246, 252, 0.2);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(240, 246, 252, 0.3);
+}
+
+
+body.shell {
+    background-color: #010409;
+}
+
+body.stream {
+    background-color: #161b22;
+}
+
+.terminal-container {
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+}
+
+:focus {
+    outline: none;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+}
+
+.wait {
+    cursor: wait;
+}
+
+.device-view {
+    z-index: 1;
+}
+
+.video-layer {
+    position: absolute;
+    z-index: 0;
+}
+
+.touch-layer {
+    position: absolute;
+    z-index: 1;
+}
+
+.video {
+    background-color: #000000;
+}
+
+.control-buttons-list.collapsed .control-button:not(.toggle-button) {
+    display: none;
+}
+
+.control-button {
+    margin: .178rem .393rem;
+    padding: 0;
+    width: 1.071rem;
+    height: 1.071rem;
+    border: none;
+    opacity: 0.75;
+    background-color: var(--control-buttons-bg-color);
+}
+
+.control-button:hover {
+    opacity: 1;
+}
+
+.control-wrapper > input[type=checkbox] {
+    display: none;
+}
+
+.control-wrapper > label {
+    display: inline-block;
+}
+
+.control-button > svg {
+    fill: var(--svg-button-fill);
+}
+
+.control-wrapper > input[type=checkbox].two-images:checked + label > svg.image-on {
+    display: block;
+}
+
+.control-wrapper > input[type=checkbox].two-images:not(:checked) + label > svg.image-on {
+    display: none;
+}
+
+.control-wrapper > input[type=checkbox].two-images:checked + label > svg.image-off {
+    display: none;
+}
+
+.control-wrapper > input[type=checkbox].two-images:not(:checked) + label > svg.image-off {
+    display: block;
+}
+
+.control-wrapper > input[type=checkbox]:checked + label > svg {
+    fill: var(--svg-checkbox-bg-color);
+}
+
+/* ===== Popup window layout: floating vertical toolbar ===== */
+body.popup-layout {
+    background-color: #000;
+}
+
+/* Stream overlay — loading & disconnect states */
+.stream-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.85);
+    z-index: 50;
+    pointer-events: none;
+}
+
+.stream-overlay-spinner {
+    width: 36px;
+    height: 36px;
+    border: 3px solid rgba(240, 246, 252, 0.15);
+    border-top-color: var(--accent-primary);
+    border-radius: 50%;
+    animation: stream-spin 0.8s linear infinite;
+    margin-bottom: 12px;
+}
+
+@keyframes stream-spin {
+    to { transform: rotate(360deg); }
+}
+
+.stream-overlay-text {
+    color: var(--text-secondary);
+    font-size: 13px;
+    font-family: var(--font-sans);
+    text-align: center;
+    padding: 0 20px;
+}
+
+.stream-overlay.disconnected {
+    background-color: rgba(0, 0, 0, 0.92);
+}
+
+.stream-overlay.disconnected .stream-overlay-text {
+    color: var(--accent-danger);
+}
+
+body.popup-layout .device-view {
+    float: none !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+body.popup-layout .video {
+    float: none !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-height: none !important;
+    max-width: none !important;
+}
+
+body.popup-layout .video-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    z-index: 0;
+}
+
+body.popup-layout .touch-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    touch-action: none;
+    z-index: 1;
+}
+
+body.popup-layout .control-buttons-list {
+    position: absolute !important;
+    right: 8px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    float: none !important;
+    width: 2.8rem !important;
+    min-width: 2.8rem !important;
+    max-width: 2.8rem !important;
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    flex-wrap: nowrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 1px;
+    padding: 3px 2px !important;
+    margin: 0 !important;
+    border-radius: 7px;
+    background-color: rgba(22, 27, 34, 0.65) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(240, 246, 252, 0.08);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    order: unset !important;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), right 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+    opacity: 1;
+}
+
+/* Auto-hide toolbar when no mouse movement */
+body.popup-layout .control-buttons-list.auto-hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-50%) translateX(20px) !important;
+}
+
+body.popup-layout .device-view:hover .control-buttons-list.auto-hidden {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(-50%) !important;
+}
+
+body.popup-layout .control-buttons-list.collapsed {
+    right: 8px !important;
+    width: 0 !important;
+    min-width: 0 !important;
+    max-width: 0 !important;
+    background-color: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    transform: translateY(-50%) !important;
+}
+
+body.popup-layout .control-buttons-list.collapsed .control-button:not(.toggle-button) {
+    display: none !important;
+}
+
+/* Toggle button — below the toolbar, horizontally centered */
+body.popup-layout .control-buttons-list .toggle-button {
+    position: absolute !important;
+    left: 50% !important;
+    top: calc(100% + 8px) !important;
+    transform: translateX(-50%) !important;
+    width: 2.2rem !important;
+    height: 2.2rem !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: rgba(22, 27, 34, 0.9) !important;
+    border: 1px solid rgba(240, 246, 252, 0.2) !important;
+    border-radius: 50% !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+    z-index: 20 !important;
+}
+
+/* Arrow: default points RIGHT (→ = collapse) — rotate ARROW_BACK 180° */
+body.popup-layout .control-buttons-list .toggle-button svg {
+    width: 1rem !important;
+    height: 1rem !important;
+    fill: var(--text-secondary) !important;
+    transition: transform 0.3s ease !important, fill 0.3s ease !important;
+    transform: rotate(180deg);
+}
+
+body.popup-layout .control-buttons-list .toggle-button:hover {
+    background-color: rgba(40, 48, 58, 0.95) !important;
+}
+
+body.popup-layout .control-buttons-list .toggle-button:hover svg {
+    fill: var(--text-primary) !important;
+}
+
+/* Collapsed: arrow points LEFT (← = expand) */
+body.popup-layout .control-buttons-list.collapsed .toggle-button svg {
+    transform: none;
+}
+
+body.popup-layout .control-button {
+    margin: 1px 1.5px !important;
+    width: 0.9rem !important;
+    height: 0.9rem !important;
+    opacity: 0.7;
+    background-color: transparent !important;
+    border-radius: 4px;
+    transition: opacity var(--transition-fast), background-color var(--transition-fast);
+    flex-shrink: 0;
+}
+
+body.popup-layout .control-button:hover {
+    opacity: 1;
+    background-color: rgba(240, 246, 252, 0.1) !important;
+}
+
+body.popup-layout .control-wrapper > input[type=checkbox]:checked + label > svg {
+    fill: var(--accent-primary) !important;
+}
+
+/* Screen-off active state */
+body.popup-layout .control-button.screen-off-active > svg {
+    fill: var(--accent-warning) !important;
+    opacity: 1;
+}
+
+/* Touch-optimized: slightly larger buttons for mobile, but keep compact */
+@media (pointer: coarse) {
+    body.popup-layout .control-buttons-list {
+        gap: 1.5px;
+        padding: 2.5px 1.5px !important;
+        border-radius: 6px;
+    }
+
+    body.popup-layout .control-button {
+        width: 1rem !important;
+        height: 1rem !important;
+        border-radius: 5px;
+        margin: 0.5px 1px !important;
+    }
+}
+
+/* Popup-layout more-box: fixed overlay for mobile */
+@media screen and (max-width: 768px) {
+    body.popup-layout .more-box {
+        position: fixed !important;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        max-height: 80vh;
+        overflow-y: auto;
+        z-index: 100;
+        box-sizing: border-box;
+        font-size: 1rem;
+    }
+}
+
+/* Landscape device orientation: rotate video to fill portrait viewport.
+   仅当浏览器视口自身为竖屏（orientation: portrait，如手机浏览器、竖长弹窗）时旋转，
+   宽屏视口直接 contain 适配（横屏画面自然占满窗口），避免横屏内容在 PC 宽窗口里被旋转变小。 */
+@media (orientation: portrait) {
+    body.popup-layout.landscape .video-layer {
+        width: 100vh !important;
+        height: 100vw !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) rotate(90deg) !important;
+        transform-origin: center center !important;
+    }
+
+    /* 设备旋转方向修正：ROTATION_90（内容顶边朝右）需逆时针转回正立，
+       ROTATION_270（顶边朝左）需顺时针转正，两个方向分别处理 */
+    body.popup-layout.landscape.rotation-90 .video-layer {
+        transform: translate(-50%, -50%) rotate(-90deg) !important;
+    }
+
+    body.popup-layout.landscape.rotation-270 .video-layer {
+        transform: translate(-50%, -50%) rotate(90deg) !important;
+    }
+
+    /* 触摸层（接收点击的 canvas）必须与视频层完全同步旋转，否则视觉旋转后点击命中的仍是
+       未旋转的触摸盒子，导致触摸坐标错位。逆旋转坐标换算见 InteractionHandler.buildTouchOnClient。 */
+    body.popup-layout.landscape .touch-layer {
+        width: 100vh !important;
+        height: 100vw !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) rotate(90deg) !important;
+        transform-origin: center center !important;
+    }
+
+    body.popup-layout.landscape.rotation-90 .touch-layer {
+        transform: translate(-50%, -50%) rotate(-90deg) !important;
+    }
+
+    body.popup-layout.landscape.rotation-270 .touch-layer {
+        transform: translate(-50%, -50%) rotate(90deg) !important;
+    }
+}
